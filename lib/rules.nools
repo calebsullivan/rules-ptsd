@@ -1,0 +1,70 @@
+// rules.nools
+
+define Person {
+    patient_concern : null,
+    patient_age : null,
+    assult : null,
+    displaced : null,
+    pain : null,
+    a : null,
+    b : null,
+    c : null,
+    d : null,
+    e : null,
+    symptoms_list: null
+}
+
+define Diagnosis {
+    di : null
+}
+
+define Confidence {
+    co : null
+}
+
+rule Not_concerned {
+    when {
+        p: Person p.patient_concern == false;
+        not(d : Diagnosis d.di == "bad");
+    }
+    then {
+        var output = new Diagnosis({di:"possibility"});
+        emit("di", output);
+        assert(output);
+    }
+}
+
+rule Forced_to_leave_home {
+    when {
+        p: Person p.displaced == true;
+        not(d : Diagnosis d.di == "bad");
+    }
+    then {
+        var output = new Diagnosis({di:"healthy"});
+        emit("di", output);
+        assert(output);
+    }
+}
+
+rule Negative_feelings {
+    when {
+        p: Person 'bad' in p.a OR 'not' in p.a;
+        not(p: Person 'good' in p.a OR 'blah' in p.a);
+    }
+    then {
+        var output = new Diagnosis({di:"bad"});
+        emit("di", output);
+        assert(output);
+    }
+}
+
+rule Responded {
+    when {
+        p: Person;
+    }
+    then {
+        var d = new Diagnosis({name : n, di : "healthy"});
+        emit("di", d);
+        assert(d);
+    }
+}

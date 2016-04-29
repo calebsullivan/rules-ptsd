@@ -1,1 +1,136 @@
-<!---->
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+><title>PTSD 496</title><meta name="description" content=""><meta name="keywords" content=""><link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/graphs.css"><link rel="stylesheet" href="css/site.css"><style>body { padding-top: 60px; }
+</style>
+<script src="scripts/ui.js"></script></head><body><div role="navigation" class="navbar navbar-fixed-top navbar-custom"><div class="container whiteout"><div class="hero"></div><div class="navbar-header"><button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><div class="collapse navbar-collapse"><ul class="nav navbar-nav"><li><a href="index.html">Home</a></li><li><a href="http://cs.uwindsor.ca">CS @ UWindsor</a></li><li><a href="http://www.uwindsor.ca/?q=apply-now">Admissions</a></li><li><a href="user.html"></a></li></ul></div></div></div><div class="container-one"></div>
+
+<div class="container">
+	<h1>Assess yourself: PTSD diagnosis system</h1>
+	<h3>A study on matching patient behavioral patterns using Rete-based rules.</h3>
+	<p>This tool requests some information about a patient and uses common markers to determine at what level of confidence the patient displays signs. This is a computer science demonstration and will likely be inaccurate, only a professional can make a final diagnosis at high confidence.</p>
+		<p>No information will be transmitted, all processing will take place on the local machine in active memory only and will be destroyed when closing this window.</p>
+	<hr>
+
+<div class="diagnose middle">
+	<h1>Patient Questionnaire</h1>
+
+    <div class="diagnose-container inline">
+        <form action="#" id="app">
+            <div class="errors"></div>
+
+            <div>
+
+            <h4>Basic details</h4>
+            <label for="patient_concern">Is the patient concerned he or she may be experiencing PTSD?</label>
+            <select id="patient_concern">
+                <option value="">No</option>
+                <option value="somewhat">Somewhat</option>
+                <option value="significantly">Significantly</option>
+            </select>
+            </div>
+
+            <label for="patient_age">Current age of patient:</label>
+            <select id="patient_age">
+                <option value="">Not given</option>
+                <option value="child">Child</option>
+                <option value="adult">Adult</option>
+                <option value="senior">Senior</option>
+            </select>
+            </div>
+			<hr/>
+            <h4>History</h4>
+            <div>
+                <label for="displaced">Displaced by war</label>
+                <input type="checkbox" id="displaced"/>
+            </div>
+            <div>
+                <label for="assult">Victim of assult</label>
+                <input type="checkbox" id="assult"/>
+            </div>
+            <div>
+                <label for="pain">Vague chronic pain</label>
+                <input type="checkbox" id="pain"/>
+            </div>
+            <div>
+			<hr/>
+            <h4>Simple questions</h4>
+            
+<div>
+<label for="a">How do you feel when you recall the event?</label>
+<div>
+            <input style="width:100%" type="text" id="a"/>
+</div>
+</div>
+<div>
+<label for="b">Do you experience dreams or flashbacks about it?</label>
+<div>
+            <input style="width:100%" type="text" id="b"/>
+</div>
+</div>
+<div>
+<label for="c">Do you find yourself avoiding people or activities you associate with the event? </label>
+<div>
+            <input style="width:100%" type="text" id="c"/>
+</div>
+</div>
+<div>
+<label for="d">Do you find yourself forgetting occurrences from that period?</label>
+<div>
+            <input style="width:100%" type="text" id="d"/>
+</div>
+</div>
+<div>
+<label for="e">Do you find yourself looking carefully around when you are in a public place?</label>
+<div>
+            <input style="width:100%" type="text" id="e"/>
+</div>
+</div>
+            
+            <div>
+            <label for="symptoms_list">Other Symptoms:</label>
+<div>
+            <input style="width:100%" type="text" id="symptoms_list"/>
+            </div>
+            </div>
+<div style="padding:20px; padding-left:5px">
+            <input type="submit" value="Test"/>
+            </div>
+        </form>
+
+
+        <hr/>
+        <div id="exit_container">
+        <h2>Diagnosis (satisfied chain)</h2>
+
+        <div id="results_container"></div>
+
+        <hr/>
+        <h2>Methodology of Diagnostic Reasoning (rules fired)</h2>
+        <div id="reason_container"></div>
+        <hr/>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="container">
+	<div>
+        <h2>References</h2>
+		<p>[1]  Rete based rules engine written in javascript, http://c2fo.github.io/nools</p>
+		<p>[2] Van der Kolk BA, Pelcovitz D, Roth S, et al. Dissociation, somatization, and affect dysregulation: the complexity of adaptation of trauma. Am J Psychiatry 1996; 153:83.</p>
+		<p>[3] Kessler RC, Rose S, Koenen KC, et al. How well can post-traumatic stress disorder be predicted from pre-trauma risk factors? An exploratory study in the WHO World Mental Health Surveys. World Psychiatry 2014; 13:265.</p>
+		<p>[4] Jitender Sareen, MD, FRCPC, et al. Post-traumatic stress disorder in adults: Epidemiology, pathophysiology, clinical manifestations, course, and diagnosis. Dec 15, 2015.
+		</p>
+		<p>[5] Lang, A.J., Stein, M.B. (2005) An abbreviated PTSD checklist for use as a screening instrument in primary care. Behaviour Research and Therapy, 43, 585-594 
+		</p>
+	</div>
+	<div class="footer"><hr style="margin: 30px 0 10px 0;"><p>By <a href="https://github.com/calebsullivan">Caleb Sullivan</a> for 03-60-496 project course. <a href="http://uwindsor.ca">University of Windsor</a></p></div></div>
+
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="scripts/index.js"></script>
+	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/common.js"></script>
+	<script type="text/javascript" src="/scripts/nools/nools.js"></script>
+	<script type="text/javascript" src="/scripts/nools/common.js"></script>
+</body></html>
