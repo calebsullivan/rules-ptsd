@@ -106,3 +106,7 @@ strong {
 .tile-link{
   color:#333;
 }
+
+.col-sm-4{
+  min-height:230px;
+}

@@ -18,29 +18,88 @@ define Diagnosis {
     di : null
 }
 
+define Reason {
+    re : null
+}
+
 define Confidence {
     co : null
 }
 
-rule Not_concerned {
+define Return {
+    rv : null
+}
+
+
+
+rule Flashbacks {
     when {
         p: Person p.patient_concern == false;
-        not(d : Diagnosis d.di == "bad");
+        not(d : Diagnosis d.di == "healthy");
     }
     then {
-        var output = new Diagnosis({di:"possibility"});
+        var output = new Diagnosis({di:"low"});
         emit("di", output);
         assert(output);
     }
 }
 
-rule Forced_to_leave_home {
+rule Recall_event_concerning {
     when {
-        p: Person p.displaced == true;
-        not(d : Diagnosis d.di == "bad");
+        p: Person 'bad' in p.a OR 'not' in p.a;
+        not(d : Diagnosis d.di == "none");
+    }
+    then {
+        var output = new Diagnosis({di:"low"});
+        emit("di", output);
+        assert(output);
+    }
+}
+
+
+rule Anxiety {
+    when {
+        p: Person 'no' in p.c AND 'no' in p.d AND 'yes' in p.a;
+        not(d : Diagnosis d.di == "none");
+    }
+    then {
+        var output = new Diagnosis({di:"anxiety"});
+        emit("di", output);
+        assert(output);
+    }
+}
+
+rule Association_not_affirmative {
+    when {
+        p: Person 'no' in p.b OR 'sometimes' notIn p.b;
+        not(d : Diagnosis d.di == "none");
     }
     then {
         var output = new Diagnosis({di:"healthy"});
+        emit("di", output);
+        assert(output);
+    }
+}
+
+rule Dreams_or_flashbacks_affirmative {
+    when {
+        p: Person 'no' notIn p.c;
+        not(d : Diagnosis d.di == "none");
+    }
+    then {
+        var output = new Diagnosis({di:"low"});
+        emit("di", output);
+        assert(output);
+    }
+}
+
+
+rule Forced_to_leave_home {
+    when {
+        p: Person p.displaced == true;
+    }
+    then {
+        var output = new Diagnosis({di:"none"});
         emit("di", output);
         assert(output);
     }
@@ -52,8 +111,19 @@ rule Negative_feelings {
         not(p: Person 'good' in p.a OR 'blah' in p.a);
     }
     then {
-        var output = new Diagnosis({di:"bad"});
+        var output = new Diagnosis({di:"high", co:"40"});
         emit("di", output);
+        assert(output);
+    }
+}
+
+rule PTSD_Marker {
+    when {
+        d : Diagnosis d.di == 'low';
+    }
+    then {
+        var output = new Return({rv:"-20"});
+        emit("rv", output);
         assert(output);
     }
 }
@@ -63,8 +133,8 @@ rule Responded {
         p: Person;
     }
     then {
-        var d = new Diagnosis({name : n, di : "healthy"});
-        emit("di", d);
-        assert(d);
+        var output = new Return({rv : "", co:"100", di:"none"});
+        emit("rv", output);
+        assert(output);
     }
 }

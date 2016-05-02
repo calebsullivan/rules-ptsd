@@ -6,9 +6,22 @@
 
 <div class="container">
 	<h1>Assess yourself: PTSD diagnosis system</h1>
-	<h3>A study on matching patient behavioral patterns using Rete-based rules.</h3>
+	<h3>A study on matching patient behavioral patterns.</h3>
 	<p>This tool requests some information about a patient and attempts to diagnose PTSD signs. </p>
 		<p>This is a computer science demonstration and will likely be inaccurate, only a professional can make a diagnosis. No information will be transmitted, all processing will take place on the local machine in active memory only and will be destroyed when closing this window.</p>
+
+    <p>Optionally pre-fill with a selection of sample answers:</p>
+    <ul>
+        <li><a href="#" id="default1">
+            Sample answers 1 (PTSD sufferer) 
+            </a></li>
+        <li><a href="#" id="default3">
+            Sample answers 2 (possible anxiety)
+            </a></li>
+        <li><a href="#" id="default2">
+            Sample answers 3 (expectedly healthy)
+            </a></li>
+    </ul>
 	<hr>
 
 <div class="diagnose middle">
@@ -21,15 +34,15 @@
             <div>
 
             <h4>Basic details</h4>
-            <label for="patient_concern">Is the patient concerned he or she may be experiencing PTSD?</label>
+            <label for="patient_concern">How are you feeling?</label>
             <select id="patient_concern">
-                <option value="">No</option>
-                <option value="somewhat">Somewhat</option>
-                <option value="significantly">Significantly</option>
+                <option value="not">Not good</option>
+                <option value="good">Good</option>
+                <option value="great">Very good</option>
             </select>
             </div>
 
-            <label for="patient_age">Current age of patient:</label>
+            <label for="patient_age">Current age:</label>
             <select id="patient_age">
                 <option value="">Not given</option>
                 <option value="child">Child</option>
@@ -53,10 +66,10 @@
             </div>
             <div>
 			<hr/>
-            <h4>Simple questions</h4>
+            <h4>If you have experienced a tramatic event:</h4>
             
 <div>
-<label for="a">How do you feel when you recall the event?</label>
+<label for="a">How would you describe how you feel when you recall the event?</label>
 <div>
             <input style="width:100%" type="text" id="a"/>
 </div>
@@ -79,6 +92,8 @@
             <input style="width:100%" type="text" id="d"/>
 </div>
 </div>
+            <hr/>
+            <h4>Other questions:</h4>
 <div>
 <label for="e">Do you find yourself looking carefully around when you are in a public place?</label>
 <div>
